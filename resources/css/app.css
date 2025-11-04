@@ -1,0 +1,279 @@
+@import 'remixicon/fonts/remixicon.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Phase 7: TikTok Styling - Complete Animations */
+@layer utilities {
+    /* ========== Phase 6 Interactions Animations ========== */
+
+    /* Heart burst animation for double-tap like */
+    @keyframes heartBurst {
+        0% {
+            opacity: 0;
+            transform: scale(0.3);
+        }
+        30% {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+        70% {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        100% {
+            opacity: 0;
+            transform: scale(1.5);
+        }
+    }
+
+    .double-tap-heart {
+        animation: heartBurst 0.8s ease-out;
+    }
+
+    /* Like button burst animation */
+    @keyframes likeBurst {
+        0% {
+            transform: scale(1);
+        }
+        25% {
+            transform: scale(1.3);
+        }
+        50% {
+            transform: scale(0.9);
+        }
+        75% {
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    .like-burst {
+        animation: likeBurst 0.6s ease-out;
+    }
+
+    /* Toast notification fade */
+    .toast-notification {
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+    }
+
+    /* ========== Phase 7: Additional Animations ========== */
+
+    /* Loading Spinner Animation */
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .animate-spin-slow {
+        animation: spin 1.5s linear infinite;
+    }
+
+    /* Video Fade In Animation */
+    @keyframes videoFadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .video-fade-in {
+        animation: videoFadeIn 0.5s ease-out;
+    }
+
+    /* Video Fade Out Animation */
+    @keyframes videoFadeOut {
+        from {
+            opacity: 1;
+            transform: scale(1);
+        }
+        to {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+    }
+
+    .video-fade-out {
+        animation: videoFadeOut 0.3s ease-in;
+    }
+
+    /* Follow Button Hover Animation */
+    @keyframes followPulse {
+        0%, 100% {
+            transform: scale(1);
+            box-shadow: 0 0 0 0 rgba(254, 44, 85, 0.7);
+        }
+        50% {
+            transform: scale(1.05);
+            box-shadow: 0 0 0 8px rgba(254, 44, 85, 0);
+        }
+    }
+
+    .follow-pulse {
+        animation: followPulse 2s infinite;
+    }
+
+    /* Skeleton Loading Animation */
+    @keyframes shimmer {
+        0% {
+            background-position: -1000px 0;
+        }
+        100% {
+            background-position: 1000px 0;
+        }
+    }
+
+    .skeleton {
+        background: linear-gradient(
+            90deg,
+            #161823 0%,
+            #2a2d3a 50%,
+            #161823 100%
+        );
+        background-size: 1000px 100%;
+        animation: shimmer 2s infinite;
+    }
+
+    /* Bounce Animation for Action Buttons */
+    @keyframes bounce {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    .animate-bounce-slow {
+        animation: bounce 2s infinite;
+    }
+
+    /* Slide Up Animation */
+    @keyframes slideUp {
+        from {
+            transform: translateY(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .slide-up {
+        animation: slideUp 0.4s ease-out;
+    }
+
+    /* Pulse Animation for Notifications */
+    @keyframes pulse {
+        0%, 100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.5;
+        }
+    }
+
+    .animate-pulse-slow {
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    /* Smooth Scroll Behavior */
+    .smooth-scroll {
+        scroll-behavior: smooth;
+    }
+
+    /* Hide Scrollbar */
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    /* Custom Scrollbar for Sidebar */
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 3px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.3);
+    }
+}
+
+/* ========== Phase 7: Component Styles ========== */
+@layer components {
+    /* Button Styles */
+    .btn-primary {
+        @apply bg-tiktok-pink text-white font-semibold px-6 py-2 rounded-md hover:bg-pink-600 transition-all duration-200 hover:scale-105;
+    }
+
+    .btn-secondary {
+        @apply border border-gray-300 text-gray-700 font-semibold px-6 py-2 rounded-md hover:bg-gray-100 transition-all duration-200;
+    }
+
+    .btn-icon {
+        @apply w-12 h-12 rounded-full bg-gray-800/50 hover:bg-gray-700/50 flex items-center justify-center hover:scale-110 transition backdrop-blur-sm;
+    }
+
+    /* Input Styles */
+    .input-primary {
+        @apply w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-tiktok-pink focus:border-transparent transition;
+    }
+
+    /* Card Styles */
+    .card {
+        @apply bg-white rounded-lg shadow-md p-6 transition hover:shadow-lg;
+    }
+
+    /* Badge Styles */
+    .badge {
+        @apply inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-tiktok-pink rounded-full;
+    }
+
+    /* Avatar Styles */
+    .avatar {
+        @apply rounded-full flex items-center justify-center bg-gradient-to-br from-purple-400 to-pink-400;
+    }
+
+    /* Gradient Background */
+    .gradient-overlay {
+        @apply bg-gradient-to-t from-black/80 via-black/50 to-transparent;
+    }
+
+    /* Video Progress Bar */
+    .progress-bar-container {
+        @apply w-full h-1 bg-gray-700 rounded-full overflow-hidden cursor-pointer hover:h-1.5 transition-all;
+    }
+
+    .video-progress-bar {
+        @apply h-full bg-tiktok-pink transition-all duration-100 rounded-full;
+    }
+
+    .progress-time {
+        @apply text-xs text-gray-400 font-medium;
+    }
+}
